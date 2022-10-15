@@ -1,0 +1,29 @@
+{
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.0.3",
+        "express": "^4.18.2"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.20"
+    },
+    "name": "assignment-1",
+    "description": "��#\u0000 \u0000s\u0000a\u0000m\u0000s\u0000u\u0000z\u0000z\u0000a\u0000m\u0000a\u0000n\u00001\u00009\u00009\u00008\u0000-\u0000P\u0000H\u0000-\u0000A\u0000C\u0000C\u0000-\u0000N\u0000O\u0000D\u0000E\u0000-\u0000M\u0000O\u0000N\u0000G\u0000O\u0000-\u0000A\u0000-\u00001\u0000\r\u0000 \u0000",
+    "version": "1.0.0",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "start-dev": "nodemon index.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/samsuzzaman1998/samsuzzaman1998-PH-ACC-NODE-MONGO-A-1.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/samsuzzaman1998/samsuzzaman1998-PH-ACC-NODE-MONGO-A-1/issues"
+    },
+    "homepage": "https://github.com/samsuzzaman1998/samsuzzaman1998-PH-ACC-NODE-MONGO-A-1#readme"
+}
