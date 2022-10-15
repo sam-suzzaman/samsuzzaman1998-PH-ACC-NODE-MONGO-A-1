@@ -1,0 +1,18 @@
+[
+    {
+        "_id": "01",
+        "name": "Random User 01",
+        "gender": "male",
+        "contact": "01*********",
+        "address": "address 01",
+        "photoUrl": "photourl-1 here"
+    },
+    {
+        "_id": "02",
+        "name": "Random User 02",
+        "gender": "male",
+        "contact": "01*********",
+        "address": "address 02",
+        "photoUrl": "photourl-2 here"
+    }
+]
