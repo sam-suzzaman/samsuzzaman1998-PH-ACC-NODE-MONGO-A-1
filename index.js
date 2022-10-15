@@ -13,7 +13,7 @@ const port = process.env.PORT || 4000;
 =================================*/
 
 // 01. To get All random users
-app.get("/API/GET/user/all", (req, res) => {
+app.get("/GET/user/all", (req, res) => {
     FS.readFile("Data.json", "utf-8", (err, data) => {
         if (err) {
             res.send({
@@ -31,7 +31,7 @@ app.get("/API/GET/user/all", (req, res) => {
 });
 
 // 02. To get a single random user
-app.get("/API/GET/user/random/:id", (req, res) => {
+app.get("/GET/user/random/:id", (req, res) => {
     const ID = req.params.id;
 
     FS.readFile("Data.json", "utf-8", (err, data) => {
@@ -54,7 +54,7 @@ app.get("/API/GET/user/random/:id", (req, res) => {
 });
 
 // 03. To get Limited random users
-app.get("/API/GET/user", (req, res) => {
+app.get("/GET/user", (req, res) => {
     const limitValue = req.query.limitUser;
     // const {limitValue}=req.query;
     // at sending end: url?user=5&page=4
@@ -77,7 +77,7 @@ app.get("/API/GET/user", (req, res) => {
 });
 
 // 04. Add a random user
-app.post("/API/POST/user/save", (req, res) => {
+app.post("/POST/user/save", (req, res) => {
     const newUserData = req.body;
 
     const { _id, gender, name, contact, address, photoUrl } = newUserData;
@@ -118,7 +118,7 @@ app.post("/API/POST/user/save", (req, res) => {
 });
 
 // 05. Update a random user
-app.patch("/API/PATCH/user/update/:id", (req, res) => {
+app.patch("/PATCH/user/update/:id", (req, res) => {
     const ID = req.params.id;
     const updatedData = req.body;
 
@@ -164,7 +164,7 @@ app.patch("/API/PATCH/user/update/:id", (req, res) => {
 });
 
 // 06. Delete a random user
-app.delete("/API/Delete/user/delete/:id", (req, res) => {
+app.delete("/Delete/user/delete/:id", (req, res) => {
     const ID = req.params.id;
 
     FS.readFile("Data.json", "utf-8", (err, data) => {
@@ -209,7 +209,7 @@ app.delete("/API/Delete/user/delete/:id", (req, res) => {
     });
 });
 
-app.get("/API/", (req, res) => {
+app.get("/", (req, res) => {
     res.send("Server is Running");
 });
 
