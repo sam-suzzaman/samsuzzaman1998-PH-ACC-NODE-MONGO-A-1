@@ -12,6 +12,7 @@ const port = process.env.PORT || 4000;
     All Routes and Handlers
 =================================*/
 
+// 01. To get All random users
 app.get("/GET/user/all", (req, res) => {
     FS.readFile("Data.json", "utf-8", (err, data) => {
         if (err) {
@@ -24,6 +25,28 @@ app.get("/GET/user/all", (req, res) => {
             res.send({
                 status: "success",
                 result,
+            });
+        }
+    });
+});
+
+// 02. To get a single random user
+app.get("/GET/user/random/:id", (req, res) => {
+    const ID = req.params.id;
+
+    FS.readFile("Data.json", "utf-8", (err, data) => {
+        if (err) {
+            res.send({
+                status: "failed",
+                message: err.message,
+            });
+        } else {
+            const result = JSON.parse(data);
+            // finding user
+            const targetUser = result.find((user) => user._id === ID);
+            res.send({
+                status: "success",
+                result: targetUser,
             });
         }
     });
