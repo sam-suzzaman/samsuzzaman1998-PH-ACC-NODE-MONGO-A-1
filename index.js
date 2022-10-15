@@ -76,6 +76,47 @@ app.get("/GET/user", (req, res) => {
     });
 });
 
+// 04. Add a random user
+app.post("/POST/user/save", (req, res) => {
+    const newUserData = req.body;
+
+    const { _id, gender, name, contact, address, photoUrl } = newUserData;
+    if (_id && gender && name && contact && address && photoUrl) {
+        // To Read Data
+        FS.readFile("Data.json", "utf-8", (err, data) => {
+            if (err) {
+                res.send({
+                    status: "falied",
+                    message: err.message,
+                });
+            } else {
+                const dataInJson = JSON.parse(data);
+                const updatedData = [...dataInJson, newUserData];
+                const updatedDataInString = JSON.stringify(updatedData);
+
+                FS.writeFile("Data.json", updatedDataInString, (err) => {
+                    if (err) {
+                        res.send({
+                            status: "falied",
+                            message: err.message,
+                        });
+                    } else {
+                        res.send({
+                            status: "success",
+                            message: "User added successfully",
+                        });
+                    }
+                });
+            }
+        });
+    } else {
+        res.send({
+            status: "failed",
+            message: "All fields are required",
+        });
+    }
+});
+
 app.get("/", (req, res) => {
     res.send("Server is Running");
 });
