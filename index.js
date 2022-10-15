@@ -44,9 +44,33 @@ app.get("/GET/user/random/:id", (req, res) => {
             const result = JSON.parse(data);
             // finding user
             const targetUser = result.find((user) => user._id === ID);
+
             res.send({
                 status: "success",
                 result: targetUser,
+            });
+        }
+    });
+});
+
+// 03. To get Limited random users
+app.get("/GET/user", (req, res) => {
+    const limitValue = req.query.limitUser;
+    // const {limitValue}=req.query;
+    // at sending end: url?user=5&page=4
+
+    FS.readFile("Data.json", "utf-8", (err, data) => {
+        if (err) {
+            res.send({
+                status: "failed",
+                message: err.message,
+            });
+        } else {
+            const result = JSON.parse(data);
+            limitedUser = result.slice(0, limitValue);
+            res.send({
+                status: "success",
+                result: limitedUser,
             });
         }
     });
