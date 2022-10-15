@@ -8,22 +8,11 @@
         "photoUrl": "photourl-1 here"
     },
     {
-        "_id": "01",
-        "name": "111",
-        "gender": "male",
-        "contact": "eee",
-        "address": "address 01",
-        "photoUrl": "photourl-1 here"
-    },
-    {
         "_id": "02",
         "name": "222",
         "gender": "male",
         "contact": "eee",
         "address": "address 01",
         "photoUrl": "photourl-1 here"
-    },
-    { "name": "222", "contact": "eee" },
-    { "name": "222", "contact": "eee" },
-    { "name": "222", "contact": "fff" }
+    }
 ]

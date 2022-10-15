@@ -163,6 +163,52 @@ app.patch("/PATCH/user/update/:id", (req, res) => {
     });
 });
 
+// 06. Delete a random user
+app.delete("/Delete/user/delete/:id", (req, res) => {
+    const ID = req.params.id;
+
+    FS.readFile("Data.json", "utf-8", (err, data) => {
+        if (err) {
+            res.send({
+                status: "failed",
+                message: err.message,
+            });
+        } else {
+            const result = JSON.parse(data);
+            // finding user
+            const targetUser = result.find((user) => user._id === ID);
+
+            if (targetUser) {
+                const restUserData = result.filter((user) => user._id !== ID);
+                const restUserDataToStr = JSON.stringify(restUserData);
+
+                FS.writeFile("Data.json", restUserDataToStr, (err) => {
+                    if (err) {
+                        res.send({
+                            status: "failed",
+                            message: err.message,
+                        });
+                    } else {
+                        res.send({
+                            status: "success",
+                            message: "User deleted successfully",
+                        });
+                    }
+                });
+                res.send({
+                    status: "success",
+                    message: "User deleted successfully",
+                });
+            } else {
+                res.send({
+                    status: "failed",
+                    message: "ID is not valid",
+                });
+            }
+        }
+    });
+});
+
 app.get("/", (req, res) => {
     res.send("Server is Running");
 });
