@@ -117,6 +117,52 @@ app.post("/POST/user/save", (req, res) => {
     }
 });
 
+// 05. Update a random user
+app.patch("/PATCH/user/update/:id", (req, res) => {
+    const ID = req.params.id;
+    const updatedData = req.body;
+
+    FS.readFile("Data.json", "utf-8", (err, data) => {
+        if (err) {
+            console.log(err.message);
+            res.send({
+                status: "failed",
+                message: err.message,
+            });
+        } else {
+            const jsonData = JSON.parse(data);
+            const targetUser = jsonData.find((u) => u._id === ID);
+            const restUser = jsonData.filter((u) => u._id !== ID);
+
+            if (targetUser) {
+                const updatingTargetUser = { ...targetUser, ...updatedData };
+
+                const newRandomUser = [...restUser, updatingTargetUser];
+                const newRandomUserStr = JSON.stringify(newRandomUser);
+
+                FS.writeFile("Data.json", newRandomUserStr, (err) => {
+                    if (err) {
+                        res.send({
+                            status: "failed",
+                            message: err.message,
+                        });
+                    } else {
+                        res.send({
+                            status: "success",
+                            data: updatingTargetUser,
+                        });
+                    }
+                });
+            } else {
+                res.send({
+                    status: "failed",
+                    message: "ID is not valid",
+                });
+            }
+        }
+    });
+});
+
 app.get("/", (req, res) => {
     res.send("Server is Running");
 });
